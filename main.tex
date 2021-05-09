@@ -104,8 +104,63 @@
         \item jpeg (работа с растровыми изображениями).
 \end{enumerate}
 \section{Результаты}
+Для демонстрации работы алгоритма было выбрано 2 черно-белых и 2 цветных изображения. 
 \subsection{Черно-белые изображения}
-
+\subsubsection{Первое изображение}
+Размер оригинала - 194 КБ, разрешение - $1920\times 1080$ пикселя.
+\begin{figure}[H]
+    \begin{minipage}{.5\textwidth}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+      \centering
+    \caption{Восстановленое изображение \\(50 компонент)}
+    \includegraphics[width = 0.95\textwidth]{reconstructions/with_50comps_Herbert_von_Karajan.jpg}
+    \label{fig:hvk_50}
+    \hspace{8 mm}
+    \caption{Восстановленое изображение \\(100 компонент)}
+    \includegraphics[width = 0.95\textwidth]{reconstructions/with_100comps_Herbert_von_Karajan.jpg}
+    \label{fig:hvk_100}
+    \hspace{8 mm}
+    \caption{Восстановленое изображение \\(200 компонент)}
+    \includegraphics[width = 0.95\textwidth]{reconstructions/with_200comps_Herbert_von_Karajan.jpg}
+    \label{fig:hvk_200}
+    \end{minipage}%
+\end{figure}
+\subsubsection{Второе изображение}
+Размер оригинала - 1.77 МБ, разрешение - $3000\times 2402$ пикселя.
+\begin{figure}[H]
+\centering
+\caption{Оригинал}
+    \includegraphics[width = 0.5\textwidth]{resources/Adams_The_Tetons_and_the_Snake_River.jpg}
+    \label{fig:mount_orig}
+\end{figure}
+\begin{figure}[H]
+    \begin{minipage}{.5\textwidth}
+    \caption{Восстановленое изображение \\(50 компонент)}
+    \includegraphics[width = 0.95\textwidth]{reconstructions/with_50comps_Adams_The_Tetons_and_the_Snake_River.jpg}
+    \label{fig:mount_50}
+    \hspace{8 mm}
+    \caption{Восстановленое изображение \\(200 компонент)}
+    \includegraphics[width = 0.95\textwidth]{reconstructions/with_200comps_Adams_The_Tetons_and_the_Snake_River.jpg}
+    \label{fig:mount_200}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+      \centering
+    \caption{Восстановленое изображение \\(100 компонент)}
+    \includegraphics[width = 0.95\textwidth]{reconstructions/with_100comps_Adams_The_Tetons_and_the_Snake_River.jpg}
+    \label{fig:mount_100}
+    \hspace{8 mm}
+    \caption{Восстановленое изображение \\(400 компонент)}
+    \includegraphics[width = 0.95\textwidth]{reconstructions/with_400comps_Adams_The_Tetons_and_the_Snake_River.jpg}
+    \label{fig:mount_400}
+    \end{minipage}%
+\end{figure}
+\begin{table}[H]
+    \centering
+    \includegraphics[]{tables/CR_for_Adams_The_Tetons_and_the_Snake_River.pdf}
+    \caption{Оценка сжатия второго рисунка}
+    \label{tab:mount}
+\end{table}
 \section{Обсуждение}
 \section*{Примечание}
 \begin{thebibliography}{9}
