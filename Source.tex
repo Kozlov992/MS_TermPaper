@@ -1,0 +1,205 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+  \usepackage{amssymb}
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Presentation},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage[english, russian]{babel}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Presentation}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{file1 }\OtherTok{\textless{}{-}} \StringTok{"resources/Adams\_The\_Tetons\_and\_the\_Snake\_River.jpg"}
+\NormalTok{file2 }\OtherTok{\textless{}{-}} \StringTok{"resources/Herbert\_von\_Karajan.jpg"}
+\NormalTok{file3 }\OtherTok{\textless{}{-}} \StringTok{"resources/Austria.jpg"}
+\NormalTok{file4 }\OtherTok{\textless{}{-}} \StringTok{"resources/Colosseum.jpg"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{isRGB }\OtherTok{\textless{}{-}} \ConstantTok{FALSE}
+\NormalTok{fle }\OtherTok{\textless{}{-}}\NormalTok{ file2}
+\NormalTok{image }\OtherTok{\textless{}{-}} \FunctionTok{readJPEG}\NormalTok{(fle)}
+\NormalTok{image.size }\OtherTok{\textless{}{-}} \FunctionTok{file.info}\NormalTok{(fle)}\SpecialCharTok{$}\NormalTok{size}
+\ControlFlowTok{if}\NormalTok{ (isRGB) \{}
+\NormalTok{    rimage }\OtherTok{\textless{}{-}}\NormalTok{ image[, , }\DecValTok{1}\NormalTok{]}
+\NormalTok{    gimage }\OtherTok{\textless{}{-}}\NormalTok{ image[, , }\DecValTok{2}\NormalTok{]}
+\NormalTok{    bimage }\OtherTok{\textless{}{-}}\NormalTok{ image[, , }\DecValTok{3}\NormalTok{]}
+\NormalTok{    rorig\_mean }\OtherTok{\textless{}{-}} \FunctionTok{rowMeans}\NormalTok{(rimage)}
+\NormalTok{    gorig\_mean }\OtherTok{\textless{}{-}} \FunctionTok{rowMeans}\NormalTok{(gimage)}
+\NormalTok{    borig\_mean }\OtherTok{\textless{}{-}} \FunctionTok{rowMeans}\NormalTok{(bimage)}
+\NormalTok{    rimage }\OtherTok{\textless{}{-}}\NormalTok{ rimage }\SpecialCharTok{{-}}\NormalTok{ rorig\_mean}
+\NormalTok{    gimage }\OtherTok{\textless{}{-}}\NormalTok{ gimage }\SpecialCharTok{{-}}\NormalTok{ gorig\_mean}
+\NormalTok{    bimage }\OtherTok{\textless{}{-}}\NormalTok{ bimage }\SpecialCharTok{{-}}\NormalTok{ borig\_mean}
+    
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    orig\_mean }\OtherTok{\textless{}{-}} \FunctionTok{rowMeans}\NormalTok{(image)}
+\NormalTok{    image }\OtherTok{\textless{}{-}}\NormalTok{ image }\SpecialCharTok{{-}}\NormalTok{ orig\_mean}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (isRGB) \{}
+\NormalTok{    pcar }\OtherTok{\textless{}{-}} \FunctionTok{prcomp}\NormalTok{(rimage, }\AttributeTok{center =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{    pcag }\OtherTok{\textless{}{-}} \FunctionTok{prcomp}\NormalTok{(gimage, }\AttributeTok{center =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{    pcab }\OtherTok{\textless{}{-}} \FunctionTok{prcomp}\NormalTok{(bimage, }\AttributeTok{center =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{    pcaimage }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(pcar, pcag, pcab)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    pcaimage }\OtherTok{\textless{}{-}} \FunctionTok{prcomp}\NormalTok{(image, }\AttributeTok{center =}\NormalTok{ F)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pcnum }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DecValTok{200}\NormalTok{)}
+\NormalTok{compr\_rate }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{()}
+\NormalTok{pic\_name }\OtherTok{\textless{}{-}} \FunctionTok{str\_remove}\NormalTok{(fle, }\StringTok{"resources/"}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ pcnum) \{}
+    \ControlFlowTok{if}\NormalTok{ (isRGB) \{}
+\NormalTok{        pca.img }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(pcaimage, }\ControlFlowTok{function}\NormalTok{(j) \{}
+\NormalTok{            compressed.img }\OtherTok{\textless{}{-}}\NormalTok{ j}\SpecialCharTok{$}\NormalTok{x[, }\DecValTok{1}\SpecialCharTok{:}\NormalTok{i] }\SpecialCharTok{\%*\%} \FunctionTok{t}\NormalTok{(j}\SpecialCharTok{$}\NormalTok{rotation[, }\DecValTok{1}\SpecialCharTok{:}\NormalTok{i])}
+\NormalTok{        \}, }\AttributeTok{simplify =} \StringTok{"array"}\NormalTok{)}
+\NormalTok{        pca.img[, , }\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ pca.img[, , }\DecValTok{1}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ rorig\_mean}
+\NormalTok{        pca.img[, , }\DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ pca.img[, , }\DecValTok{2}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ gorig\_mean}
+\NormalTok{        pca.img[, , }\DecValTok{3}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ pca.img[, , }\DecValTok{3}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ borig\_mean}
+\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{        pca.img }\OtherTok{\textless{}{-}}\NormalTok{ pcaimage}\SpecialCharTok{$}\NormalTok{x[, }\DecValTok{1}\SpecialCharTok{:}\NormalTok{i] }\SpecialCharTok{\%*\%} \FunctionTok{t}\NormalTok{(pcaimage}\SpecialCharTok{$}\NormalTok{rotation[, }\DecValTok{1}\SpecialCharTok{:}\NormalTok{i]) }\SpecialCharTok{+}\NormalTok{ orig\_mean}
+\NormalTok{    \}}
+\NormalTok{    pca.img.name }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(}\StringTok{"with\_"}\NormalTok{, i, }\StringTok{"comps\_"}\NormalTok{, pic\_name, }\AttributeTok{sep =} \StringTok{""}\NormalTok{)}
+    \FunctionTok{writeJPEG}\NormalTok{(pca.img, }\FunctionTok{paste}\NormalTok{(}\StringTok{"reconstructions/"}\NormalTok{, pca.img.name, }\AttributeTok{sep =} \StringTok{""}\NormalTok{))}
+\NormalTok{    pca.img.size }\OtherTok{\textless{}{-}} \FunctionTok{file.info}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"reconstructions/"}\NormalTok{, pca.img.name, }\AttributeTok{sep =} \StringTok{""}\NormalTok{))}\SpecialCharTok{$}\NormalTok{size}
+\NormalTok{    compr\_rate }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(compr\_rate, image.size}\SpecialCharTok{/}\NormalTok{pca.img.size)}
+\NormalTok{\}}
+\NormalTok{content }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(pcnum, }\FunctionTok{round}\NormalTok{(compr\_rate, }\AttributeTok{digits =} \DecValTok{2}\NormalTok{))}
+\NormalTok{table\_name }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(}\StringTok{"tables/"}\NormalTok{, }\StringTok{"CR\_for\_"}\NormalTok{, }\FunctionTok{str\_remove}\NormalTok{(pic\_name, }\StringTok{"jpg"}\NormalTok{), }\StringTok{"pdf"}\NormalTok{, }\AttributeTok{sep =} \StringTok{""}\NormalTok{)}
+\NormalTok{col\_names }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"$k$"}\NormalTok{, }\StringTok{"$CR$"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(content, }\AttributeTok{format =} \StringTok{"latex"}\NormalTok{, }\AttributeTok{col.names =}\NormalTok{ col\_names, }\AttributeTok{align =} \FunctionTok{c}\NormalTok{(}\StringTok{"c"}\NormalTok{, }\StringTok{"c"}\NormalTok{), }
+    \AttributeTok{escape =}\NormalTok{ F) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{column\_spec}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{border\_left =}\NormalTok{ T) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{column\_spec}\NormalTok{(}\DecValTok{2}\NormalTok{, }\AttributeTok{border\_right =}\NormalTok{ T) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{save\_kable}\NormalTok{(table\_name)}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}

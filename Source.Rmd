@@ -1,0 +1,85 @@
+---
+title: "Presentation"
+output:
+  pdf_document:
+    extra_dependencies:
+      babel : ["english", "russian"]
+    keep_tex: true
+    latex_engine: xelatex
+---
+
+```{r include=FALSE}
+library(jpeg)
+library(knitr)
+library(kableExtra)
+library(tidyverse)
+```
+
+```{r tidy = TRUE}
+file1 <- "resources/Adams_The_Tetons_and_the_Snake_River.jpg"
+file2 <- "resources/Herbert_von_Karajan.jpg"
+file3 <- "resources/Austria.jpg"
+file4 <- "resources/Colosseum.jpg"
+```
+
+```{r tidy = TRUE}
+isRGB <- FALSE
+fle <- file2
+image <- readJPEG(fle)
+image.size <- file.info(fle)$size
+if (isRGB) {
+  rimage <- image[,,1]
+  gimage <- image[,,2]
+  bimage <- image[,,3]
+  rorig_mean <- rowMeans(rimage)
+  gorig_mean <- rowMeans(gimage)
+  borig_mean <- rowMeans(bimage)
+  rimage <- rimage - rorig_mean
+  gimage <- gimage - gorig_mean
+  bimage <- bimage - borig_mean
+  
+} else {
+  orig_mean <- rowMeans(image)
+  image <- image - orig_mean
+}
+```
+
+```{r tidy = TRUE}
+if (isRGB) {
+  pcar <- prcomp(rimage, center=FALSE)
+  pcag <- prcomp(gimage, center=FALSE)
+  pcab <- prcomp(bimage, center=FALSE)
+  pcaimage <- list(pcar, pcag, pcab)
+} else {
+  pcaimage <- prcomp(image, center=F)
+}
+```
+
+```{r tidy = TRUE}
+pcnum <- c(50, 100, 200)
+compr_rate <- c()
+pic_name <- str_remove(fle, "resources/")
+for(i in pcnum){
+    if (isRGB) {
+      pca.img <- sapply(pcaimage, function(j){
+        compressed.img <- j$x[, 1:i] %*% t(j$rotation[, 1:i])
+      }, simplify='array')
+      pca.img[,,1] <- pca.img[,,1] + rorig_mean
+      pca.img[,,2] <- pca.img[,,2] + gorig_mean
+      pca.img[,,3] <- pca.img[,,3] + borig_mean
+    } else {
+      pca.img <- pcaimage$x[, 1:i]  %*% t(pcaimage$rotation[, 1:i]) + orig_mean
+    }
+    pca.img.name <- paste("with_",i, "comps_",pic_name,sep = "")
+    writeJPEG(pca.img, paste("reconstructions/", pca.img.name, sep = ""))
+    pca.img.size <- file.info(paste("reconstructions/", pca.img.name, sep = ""))$size
+    compr_rate <- c(compr_rate, image.size / pca.img.size)
+}
+content <- data.frame(pcnum, round(compr_rate, digits = 2))
+table_name <- paste("tables/", "CR_for_", str_remove(pic_name, "jpg"), "pdf", sep = "")
+col_names <- c("$k$", "$CR$")
+knitr::kable(content, format = "latex", col.names = col_names, align = c("c","c"), escape = F) %>%
+column_spec(1, border_left = T) %>% column_spec(2, border_right = T) %>%   save_kable(table_name)
+```
+
+
