@@ -12,9 +12,110 @@
 \addtocontents{lot}{~\hfill\textbf{Страница}\par}
 \newpage
 \section{Постановка задачи}
+Исследовать применимость метода главных компонент (principal component analysis, PCA)  для сжатия растровых черно-белых и цветных изображений. Качественно сравнить оригинальные и восстановленные изображения при различных степенях сжатия. Количественно оценить результаты сжатия.
 \section{Теория}
+\subsection{Общий вид метода главных компонент}
+Пусть дана $p$-мерная выборка $x_1, x_2,\hdots, x_n$, где $x_i=(x_i^1,x_i^2,\hdots,x_i^p)$.
+\begin{enumerate}
+    \item Составим ковариационную матрицу $C$:
+    \begin{equation}
+        C=\begin{pmatrix}
+        \cov(x^1,x^1)&\cov(x^1,x^2)&\hdots&\cov(x^1,x^p)\\
+        \cov(x^2,x^1)&\cov(x^2,x^2)&\hdots&\cov(x^2,x^p)\\
+        \vdots&\vdots&\ddots&\vdots\\
+        \cov(x^p,x^1)&\cov(x^p,x^2)&\hdots&\cov(x^p,x^p)
+        \end{pmatrix}
+    \end{equation}
+    \begin{equation}
+        \cov(x^i,x^j)=\cov(x^j,x^i)=\dfrac{1}{n-1}\sum_{k=1}^n \left(x^i_k-\mathbf{E}\left[x^i\right]\right)\left(x^j_k-\mathbf{E}\left[x^j\right]\right)
+    \end{equation}
+    \item В силу симметричности и положительной полуопределенности $C$ существует разложение
+    \begin{equation}\label{diag_rep}
+        C=\underbrace{\begin{pmatrix}v_1&v_2&\hdots&v_p\end{pmatrix}}_{\substack{\\[0.2em] \text{\normalsize $\mathbf{Q}$}}}\underbrace{\diag\{\lambda_1,\lambda_2,\hdots,\lambda_p\}}_{\substack{\\[0.2em] \text{\normalsize $\mathbf{\Lambda}$}}}
+        \underbrace{\begin{pmatrix}v_1&v_2&\hdots&v_p\end{pmatrix}^T}_{\substack{\\[0.2em] \text{\normalsize $\mathbf{Q}^T$}}},
+    \end{equation}
+    где для собственных значений $C$ выполняется соотношение
+    \begin{equation}
+        \lambda_1\geq\lambda_2\geq\hdots\geq\lambda_p\geq0,
+    \end{equation}
+    а столбцы матрицы $Q$ представляют собой собственные вектора $C$ такие, что
+    \begin{equation}
+        v_i \cdot v_j = \delta_{ij}.
+    \end{equation}
+    \item Упорядоченный набор $\{v_i\}_{i=1}^p$ представляет собой главные оси. Проекцией изначальной выборки на множество первых $k$ главных осей назовем величину
+    \begin{equation}
+        Z_k=\underbrace{\begin{pmatrix}x_1&x_2&\hdots&x_p\end{pmatrix}^T}_{\substack{\\[0.2em] \text{\normalsize $\mathbf{X}$}}}\underbrace{\begin{pmatrix}v_1&v_2&\hdots&v_k\end{pmatrix}}_{\substack{\\[0.2em] \text{\normalsize $\mathbf{Q}_k$}}},
+    \end{equation}
+    дающую представление о первых $k$ главных компонентах. Главные компоненты, таким образом, полностью задаются матрицей $XQ$.
+    \item Для восстановления (с потерями) исходных данных на основании первых $k$ главных компонент необходимо выполнить преобразование
+    \begin{equation}
+        \widehat{X}=Z_k Q_k^T + \mathbf{E}[X]=X Q_k Q_k^T + \mathbf{E}[X].
+    \end{equation}
+    \end{enumerate}
+\subsection{Связь с SVD-разложением}
+Алгоритмы, в которых для нахождения главных компонент составляется матрица $C$ и её спектральное разложение, в некоторых случаях могут быть очень чувствительны к ошибкам округления\cite{book1}. Поэтому на практике для нахождения главных компонент чаще используется SVD-разложение матрицы данных $X$.\\\\
+Нетрудно показать связь классического PCA-метода и метода, использующего SVD-разложение $X$:
+\begin{enumerate}
+    \item Пусть матрица данных $X$ отцентрированна, то есть $\mathbf{E}\left[X\right]=0$. Тогда матрица ковариаций имеет вид 
+    \begin{equation}
+        C=\dfrac{1}{n-1}X^TX.
+    \end{equation}
+    $C$ представима в виде \eqref{diag_rep}.
+    \item У матрицы $X$ существует сингулярное разложение вида
+    \begin{equation}
+        X=U\Sigma V^T,
+    \end{equation}
+    где $\Sigma\;-$ матрица размера $n\times p$, у которой элементы главной диагонали состоят из неотрицательных чисел, называемые сингулярными значениями, а все остальные элементы $-$ нулевые.\\
+    Матрицы $U$ (порядка $n$) и $V$ (порядка $p$) $-$ это две унитарные матрицы, состоящие из левых и правых сингулярных векторов соответственно.
+    \item Тогда:
+    \begin{equation}
+        C=\dfrac{1}{n-1}X^TX=\dfrac{1}{n-1}\left(U\Sigma V^T\right)^T\left(U\Sigma V^T\right)=\dfrac{1}{n-1}V\Sigma^T U^T U\Sigma V^T=V\dfrac{\Sigma^T\Sigma}{n-1}V^T.
+    \end{equation}
+    Нетрудно показать, что 
+    \begin{equation}
+        \dfrac{\Sigma^T\Sigma}{n-1}=\diag\left\{\dfrac{s_1^2}{n-1}, \dfrac{s_2^2}{n-1},\hdots, \dfrac{s_1^p}{n-1}\right\}.
+    \end{equation}
+    В силу единственности спектрального представления \eqref{diag_rep} делаем вывод, что
+    \begin{equation}
+        V=Q,
+    \end{equation}
+    а спектральные и собственные числа связывает соотношение
+    \begin{equation}
+        \dfrac{s_i^2}{n-1}=\lambda_i.
+    \end{equation}
+    Главные компоненты, таким образом, задаются соотношением
+    \begin{equation}
+        XQ=XV=USV^T V=US.
+    \end{equation}
+\end{enumerate}
+\subsection{Обработка изображений}
+Пусть имеется растровое черно-белое изображение размером $n\times m$ пикселей, причем значение каждого пикселя лежит в пределах от 0 до 1 и, таким образом, обозначает соответствующий оттенок серого. Тогда изображение можно представить как упорядоченную (по столбцам) $m$-мерную выборку из $n$ образцов.\\
+В то же самое время, цветное RGB изображение размером $n\times m$ пикселей можно разбить на три матрицы размерности $n\times m$, каждая из которых будет хранить информацию о глубине одного из основных цветов (красного, зеленого или синего) в пикселях исходного изображения.
+\subsection{Оценка результатов сжатия}
+Для оценки результатов сжатия можно использовать показатель, называемый степенью сжатия:
+\begin{equation}
+    CR=\text{Степень сжатия}=\dfrac{\text{Размер исходного изображения}}{\text{Размер сжатого изображения}}.
+\end{equation}
 \section{Реализация}
+Работа выполнена на языке R в средe R Studio с использованием следующих библиотек:
+\begin{enumerate}
+        \item stats (метод главных компонент),
+        \item kableExtra (оформление),
+        \item jpeg (работа с растровыми изображениями).
+\end{enumerate}
 \section{Результаты}
+\subsection{Черно-белые изображения}
+
 \section{Обсуждение}
 \section*{Примечание}
+\begin{thebibliography}{9}
+\bibitem{book1} 
+J.M. isn't a mathematician (\url{shorturl.at/rtKNY}), Why is SVD on $X$ preferred to eigendecomposition of $XX^\top$ in PCA?\\URL (version: 2013-04-12): \url{https://math.stackexchange.com/q/359428}.
+\bibitem{book2}
+Smith, L. I. (2002, February 26). A tutorial on principal components analysis.\\
+\url{http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf}.
+\bibitem{book3}
+Santo Rdo E. (2012,  Apr-Jun). Principal Component Analysis applied to digital image compression.\\
+\url{http://www.scielo.br/pdf/eins/v10n2/a04v10n2.pdf}.
+\end{thebibliography}
 \end{document}
