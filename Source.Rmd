@@ -23,10 +23,13 @@ file4 <- "resources/Colosseum.jpg"
 ```
 
 ```{r tidy = TRUE}
-isRGB <- FALSE
-fle <- file2
+isRGB <- TRUE
+fle <- file4
 image <- readJPEG(fle)
 image.size <- file.info(fle)$size
+if (length(dim(image)) == 2) {
+  isRGB <- FALSE
+}
 if (isRGB) {
   rimage <- image[,,1]
   gimage <- image[,,2]
@@ -56,7 +59,7 @@ if (isRGB) {
 ```
 
 ```{r tidy = TRUE}
-pcnum <- c(50, 100, 200)
+pcnum <- c(1, 50, 100, 200, 400, 800, 1200)
 compr_rate <- c()
 pic_name <- str_remove(fle, "resources/")
 for(i in pcnum){
@@ -80,6 +83,30 @@ table_name <- paste("tables/", "CR_for_", str_remove(pic_name, "jpg"), "pdf", se
 col_names <- c("$k$", "$CR$")
 knitr::kable(content, format = "latex", col.names = col_names, align = c("c","c"), escape = F) %>%
 column_spec(1, border_left = T) %>% column_spec(2, border_right = T) %>%   save_kable(table_name)
+```
+```{r tidy = TRUE}
+components <- 1:20
+pic_name <- str_remove(fle, "resources/")
+if (isRGB) {
+  columns_fillers <- c("red2", "green3", "steelblue")
+  col_comp <- c("Red", "Green", "Blue")
+  for (i in 1:3) {
+    var_exp <- ((pcaimage[[i]]$sdev)^2/sum((pcaimage[[i]]$sdev)^2) * 100)[components]
+    df <- data.frame(PC = paste0("PC", components), var_exp)
+    df$PC <- factor(df$PC, levels = df$PC)
+    ggplot(df, aes(x = PC, y = var_exp)) + geom_col(fill=columns_fillers[i]) + labs(y = "% of variance explained", x = "")
+    hist_name <- paste("hists/", col_comp[i], "hist_for_",str_remove(pic_name, "jpg"), "pdf", sep = "")
+    ggsave(hist_name, device = "pdf", width = 9)
+  }
+  
+} else {
+  var_exp <- ((pcaimage$sdev)^2/sum((pcaimage$sdev)^2) * 100)[components]
+  df <- data.frame(PC = paste0("PC", components), var_exp)
+  df$PC <- factor(df$PC, levels = df$PC)
+  df %>% ggplot(aes(x=PC, y=var_exp)) + geom_col() + labs(y = "% of variance explained", x = "")
+  hist_name <- paste("hists/", "hist_for_", str_remove(pic_name, "jpg"), "pdf", sep = "")
+  ggsave(hist_name, device = "pdf", width = 9)
+}
 ```
 
 
