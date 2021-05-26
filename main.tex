@@ -118,21 +118,29 @@
 \centering
     \begin{minipage}{.5\textwidth}
     \centering
+    \caption{Восстановленное изображение \\(1 компонента)}
+    \includegraphics[width = 0.95\textwidth]{reconstructions/with_1comps_Herbert_von_Karajan.jpg}
+    \label{fig:hvk_1}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
     \caption{Восстановленное изображение \\(50 компонент)}
     \includegraphics[width = 0.95\textwidth]{reconstructions/with_50comps_Herbert_von_Karajan.jpg}
     \label{fig:hvk_50}
     \end{minipage}%
+\end{figure}
+\begin{figure}[H]
+\centering
     \begin{minipage}{.5\textwidth}
+    \centering
     \caption{Восстановленное изображение \\(100 компонент)}
     \includegraphics[width = 0.95\textwidth]{reconstructions/with_100comps_Herbert_von_Karajan.jpg}
     \label{fig:hvk_100}
     \end{minipage}%
-\end{figure}
-\begin{figure}[H]
-    \centering
+    \begin{minipage}{.5\textwidth}
     \caption{Восстановленное изображение \\(200 компонент)}
-    \includegraphics[width = .5\textwidth]{reconstructions/with_200comps_Herbert_von_Karajan.jpg}
+    \includegraphics[width = 0.95\textwidth]{reconstructions/with_200comps_Herbert_von_Karajan.jpg}
     \label{fig:hvk_200}
+    \end{minipage}%
 \end{figure}
 \begin{table}[H]
     \centering
@@ -140,14 +148,28 @@
     \caption{Оценка сжатия первого\\черно-белого рисунка}
     \label{tab:hvk}
 \end{table}
-\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{hists/hist_for_Herbert_von_Karajan.pdf}
+    \caption{Гистограмма величин главных компонент}
+    \label{fig:hvk_hist}
+\end{figure}
 \subsubsection{Второе изображение}
 Размер оригинала - 1.77 МБ, разрешение - $3000\times 2402$ пикселя.
 \begin{figure}[H]
 \centering
-\caption{Оригинал}
-    \includegraphics[width = 0.5\textwidth]{resources/Adams_The_Tetons_and_the_Snake_River.jpg}
-    \label{fig:mount_orig}
+    \begin{minipage}{.5\textwidth}
+    \centering
+    \caption{Оригинал\\$\,$}
+    \includegraphics[width = 0.95\textwidth]{resources/Adams_The_Tetons_and_the_Snake_River.jpg}
+    \label{fig:mount}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+      \centering
+    \caption{Восстановленное изображение \\(1 компонента)}
+    \includegraphics[width = 0.95\textwidth]{reconstructions/with_1comps_Adams_The_Tetons_and_the_Snake_River.jpg}
+    \label{fig:mount_1}
+    \end{minipage}%
 \end{figure}
 \begin{figure}[H]
 \centering
@@ -177,14 +199,29 @@
     \caption{Оценка сжатия второго\\черно-белого рисунка}
     \label{tab:mount}
 \end{table}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{hists/hist_for_Adams_The_Tetons_and_the_Snake_River.pdf}
+    \caption{Гистограмма величин главных компонент}
+    \label{fig:mount_hist}
+\end{figure}
 \subsection{Цветные изображения}
 \subsubsection{Первое изображение}
 Размер оригинала - 483 КБ, разрешение - $1920\times 1080$ пикселя.
 \begin{figure}[H]
 \centering
-\caption{Оригинал}
-    \includegraphics[width = 0.45\textwidth]{resources/Austria.jpg}
-    \label{fig:aus_orig}
+    \begin{minipage}{.45\textwidth}
+    \centering
+    \caption{Оригинал\\$\,$}
+    \includegraphics[width = .95\textwidth]{resources/Austria.jpg}
+    \label{fig:aus}
+    \end{minipage}%
+    \begin{minipage}{.45\textwidth}
+      \centering
+    \caption{Восстановленное изображение \\(1 компонента)}
+    \includegraphics[width = 0.95\textwidth]{reconstructions/with_1comps_Austria.jpg}
+    \label{fig:aus_1}
+    \end{minipage}%
 \end{figure}
 \begin{figure}[H]
 \centering
@@ -220,13 +257,40 @@
     \caption{Оценка сжатия первого\\цветного рисунка}
     \label{tab:aus}
 \end{table}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{hists/Redhist_for_Austria.pdf}
+    \caption{Гистограмма величин главных компонент (для красного)}
+    \label{fig:aus_r}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{hists/Greenhist_for_Austria.pdf}
+    \caption{Гистограмма величин главных компонент (для зеленого)}
+    \label{fig:aus_g}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{hists/Bluehist_for_Austria.pdf}
+    \caption{Гистограмма величин главных компонент (для голубого)}
+    \label{fig:aus_b}
+\end{figure}
 \subsubsection{Второе изображение}
 Размер оригинала - 5.09 МБ, разрешение - $5875\times 3917$ пикселя.
 \begin{figure}[H]
+\centering
+    \begin{minipage}{.45\textwidth}
     \centering
-    \caption{Оригинал}
-    \includegraphics[width = .45\textwidth]{resources/Colosseum.jpg}
+    \caption{Оригинал\\$\,$}
+    \includegraphics[width = .95\textwidth]{resources/Colosseum.jpg}
     \label{fig:colos}
+    \end{minipage}%
+    \begin{minipage}{.45\textwidth}
+      \centering
+    \caption{Восстановленное изображение \\(1 компонента)}
+    \includegraphics[width = 0.95\textwidth]{reconstructions/with_1comps_Colosseum.jpg}
+    \label{fig:col_1}
+    \end{minipage}%
 \end{figure}
 \begin{figure}[H]
 \centering
@@ -276,10 +340,30 @@
     \caption{Оценка сжатия второго\\цветного рисунка}
     \label{tab:col}
 \end{table}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{hists/Redhist_for_Colosseum.pdf}
+    \caption{Гистограмма величин главных компонент (для красного)}
+    \label{fig:col_r}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{hists/Greenhist_for_Colosseum.pdf}
+    \caption{Гистограмма величин главных компонент (для зеленого)}
+    \label{fig:col_g}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{hists/Bluehist_for_Colosseum.pdf}
+    \caption{Гистограмма величин главных компонент (для голубого)}
+    \label{fig:col_b}
+\end{figure}
 \section{Обсуждение}
 По результатам даже данного сравнительно некрупного исследования можно сказать, что использование метода главных компонент для сжатия изображений в некоторых случаях нецелесообразно. Особенно отчетливо это видно на примере первого черно-белого рисунка: при восстановлении исходного изображения со 100 главными компонентами из 1080 изображение сжимается всего лишь в 1.24 раза, причем нельзя сказать, что результат неотличим «на глаз» от оригинала - в верхнем правом углу отчетливо наблюдается «артефакт» в виде зернистости. Эта зернистоть не пропадает и при переходе к 200 главным компонентам, при которых, однако, восстановление уже лишено смысла в силу близости степени сжатия к 1.\\
 Оба цветных рисунка, если не брать во внимание небольшие синие пятна, появляющиеяся вблизи контуров облаков, «на глаз» напоминают оригинал уже при восстановлении с 400 главными компонентами. Степень сжатия для обоих рисунков в таком случае равна примерно 1.5.\\
 Лучше всего метод вел себя при применении ко второму крупноразмерному черно-белому рисунку. Восстановленный при 200 главных компонентах рисунок визуально почти идентичен оригиналу и имеет степень сжатия, равную 3.26.
+\section{Вывод}
+Результаты исследования показывают, что эффективонсть метода главных компонент при сжатии растровых изображений невелика. Максимальное сжатие, которого можно добиться с его применением, колеблется в диапазоне от 4,5 до 12.2 раз, причем во всех случаях сжатые изображения лишь очень отдалено (если вообще) напоминают оригинал. Степень и качество сжатия, при которой результат обработки будет напоминать оригинал, нельзя назвать оптимальным ($CR\in [1.5,3.5]$, на изображениях практически неизбежно присутствуют "артефакты").
 \section*{Примечание}
 С материалами работы можно ознакомиться по ссылке: \url{https://github.com/Kozlov992/MS_TermPaper}.\\ Код работы может быть найден в файле Source.pdf, оригиналы изображений - в папке resources, восстановленные изображения - в папке reconstructions.
 \begin{thebibliography}{9}
