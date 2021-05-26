@@ -148,7 +148,12 @@
     \caption{Оценка сжатия первого\\черно-белого рисунка}
     \label{tab:hvk}
 \end{table}
-\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{hists/hist_for_Herbert_von_Karajan.pdf}
+    \caption{Гистограмма величин главных компонент}
+    \label{fig:hvk_hist}
+\end{figure}
 \subsubsection{Второе изображение}
 Размер оригинала - 1.77 МБ, разрешение - $3000\times 2402$ пикселя.
 \begin{figure}[H]
@@ -194,6 +199,12 @@
     \caption{Оценка сжатия второго\\черно-белого рисунка}
     \label{tab:mount}
 \end{table}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{hists/hist_for_Adams_The_Tetons_and_the_Snake_River.pdf}
+    \caption{Гистограмма величин главных компонент}
+    \label{fig:mount_hist}
+\end{figure}
 \subsection{Цветные изображения}
 \subsubsection{Первое изображение}
 Размер оригинала - 483 КБ, разрешение - $1920\times 1080$ пикселя.
@@ -246,6 +257,24 @@
     \caption{Оценка сжатия первого\\цветного рисунка}
     \label{tab:aus}
 \end{table}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{hists/Redhist_for_Austria.pdf}
+    \caption{Гистограмма величин главных компонент (для красного)}
+    \label{fig:aus_r}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{hists/Greenhist_for_Austria.pdf}
+    \caption{Гистограмма величин главных компонент (для зеленого)}
+    \label{fig:aus_g}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{hists/Bluehist_for_Austria.pdf}
+    \caption{Гистограмма величин главных компонент (для голубого)}
+    \label{fig:aus_b}
+\end{figure}
 \subsubsection{Второе изображение}
 Размер оригинала - 5.09 МБ, разрешение - $5875\times 3917$ пикселя.
 \begin{figure}[H]
@@ -311,6 +340,24 @@
     \caption{Оценка сжатия второго\\цветного рисунка}
     \label{tab:col}
 \end{table}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{hists/Redhist_for_Colosseum.pdf}
+    \caption{Гистограмма величин главных компонент (для красного)}
+    \label{fig:col_r}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{hists/Greenhist_for_Colosseum.pdf}
+    \caption{Гистограмма величин главных компонент (для зеленого)}
+    \label{fig:col_g}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{hists/Bluehist_for_Colosseum.pdf}
+    \caption{Гистограмма величин главных компонент (для голубого)}
+    \label{fig:col_b}
+\end{figure}
 \section{Обсуждение}
 По результатам даже данного сравнительно некрупного исследования можно сказать, что использование метода главных компонент для сжатия изображений в некоторых случаях нецелесообразно. Особенно отчетливо это видно на примере первого черно-белого рисунка: при восстановлении исходного изображения со 100 главными компонентами из 1080 изображение сжимается всего лишь в 1.24 раза, причем нельзя сказать, что результат неотличим «на глаз» от оригинала - в верхнем правом углу отчетливо наблюдается «артефакт» в виде зернистости. Эта зернистоть не пропадает и при переходе к 200 главным компонентам, при которых, однако, восстановление уже лишено смысла в силу близости степени сжатия к 1.\\
 Оба цветных рисунка, если не брать во внимание небольшие синие пятна, появляющиеяся вблизи контуров облаков, «на глаз» напоминают оригинал уже при восстановлении с 400 главными компонентами. Степень сжатия для обоих рисунков в таком случае равна примерно 1.5.\\
